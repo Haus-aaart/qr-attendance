@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Session Check-in</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <h1 class="title">Session Check-in</h1>
+        <div class="small">Phone time: <span id="nowText">—</span></div>
+      </div>
+
+      <!-- IMPORTANT: Replace ACTION_URL with your Apps Script Web App URL -->
+      <form id="checkinForm" method="POST" action="ACTION_URL">
+        <label for="firstName">Vorname</label>
+        <input id="firstName" name="firstName" type="text" autocomplete="given-name" required placeholder="e.g., Max" />
+
+        <label for="sessionSelect">Session</label>
+        <select id="sessionSelect" required>
+          <option value="">Select…</option>
+        </select>
+        <div class="hint" id="sessionHint"></div>
+
+        <!-- Hidden fields submitted to Google Apps Script -->
+        <input type="hidden" id="sessionId" name="sessionId" />
+        <input type="hidden" id="sessionLabel" name="sessionLabel" />
+        <input type="hidden" id="clientTimeISO" name="clientTimeISO" />
+        <input type="hidden" id="clientTimeZone" name="clientTimeZone" />
+        <input type="hidden" id="userAgent" name="userAgent" />
+
+        <button type="submit">Check in</button>
+
+        <p class="small">If the session is wrong, select it manually from the list.</p>
+      </form>
+    </div>
+  </div>
+
+  <script src="sessions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
