@@ -1,5 +1,6 @@
+```html
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,10 +15,24 @@
         <div class="small">Phone time: <span id="nowText">—</span></div>
       </div>
 
-      <!-- IMPORTANT: Replace ACTION_URL with your Apps Script Web App URL -->
-      <form id="checkinForm" method="POST" action="https://script.google.com/macros/s/AKfycbzeZ0ihrDbvzfezk2QZmCF62tA_gASH4PEztMmukmCJwdQzFZzmi6piQ4h2bkv0JiFu/exec">
-        <label for="firstName">Vorname</label>
-        <input id="firstName" name="firstName" type="text" autocomplete="given-name" required placeholder="e.g., Max" />
+      <!-- IMPORTANT: Replace action URL with your Apps Script Web App URL -->
+      <form
+        id="checkinForm"
+        method="POST"
+        action="https://script.google.com/macros/s/AKfycbzeZ0ihrDbvzfezk2QZmCF62tA_gASH4PEztMmukmCJwdQzFZzmi6piQ4h2bkv0JiFu/exec"
+      >
+        <!-- Stable identifier instead of first name -->
+        <label for="personId">Person ID</label>
+        <input
+          id="personId"
+          name="personId"
+          type="text"
+          autocomplete="off"
+          inputmode="text"
+          required
+          placeholder="z.B. A12345"
+        />
+        <p class="small">Bitte deine Person-ID (Mitgliedsnummer) eingeben.</p>
 
         <label for="sessionSelect">Session</label>
         <select id="sessionSelect" required>
@@ -32,9 +47,12 @@
         <input type="hidden" id="clientTimeZone" name="clientTimeZone" />
         <input type="hidden" id="userAgent" name="userAgent" />
 
+        <!-- Optional: keep firstName hidden for backwards compatibility/readability -->
+        <input type="hidden" id="firstName" name="firstName" value="" />
+
         <button type="submit">Check in</button>
 
-        <p class="small">If the session is wrong, select it manually from the list.</p>
+        <p class="small">Wenn die Session falsch ist, bitte manuell auswählen.</p>
       </form>
     </div>
   </div>
@@ -43,3 +61,4 @@
   <script src="app.js"></script>
 </body>
 </html>
+```
